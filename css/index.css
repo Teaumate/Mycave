@@ -1,0 +1,95 @@
+.logo{
+    height:50px;
+    position: absolute;
+    top: 0;
+    background: white;
+}
+
+#newRow{
+    display: none;
+}
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+
+/******************************************* div to table ***********************************/
+/*.form-control {
+    border: 0;
+    box-shadow: none;
+}*/
+.table-striped>.tbody>.tr:nth-of-type(2n+1) {
+    background-color: rgb(249, 249, 249);
+}
+
+.table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+    background-color: transparent;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid rgb(221, 221, 221);
+}
+.td,
+.th {
+    padding: 0px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.th {
+    text-align: left;
+    font-weight: bold;
+}
+
+.tr>.td,
+.tr>.th {
+    padding: 8px;
+    line-height: 1.42857;
+    vertical-align: top;
+    border: 1px solid rgb(221, 221, 221);
+}
+.tr>.td {
+    height: 150px;
+}
+
+.table>.thead>.tr>.th {
+    vertical-align: bottom;
+    border-bottom: 2px solid rgb(221, 221, 221);
+}
+.table>.thead:first-child>.tr:first-child>.td,
+.table>.thead:first-child>.tr:first-child>.th {
+    border-top: 0px;
+}
+.table-bordered>.tbody>.tr>.td,
+.table-bordered>.tbody>.tr>.th,
+.table-bordered>.tfoot>.tr>.td,
+.table-bordered>.tfoot>.tr>.th,
+.table-bordered>.thead>.tr>.td,
+.table-bordered>.thead>.tr>.th {
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.table-bordered>.thead>.tr>.td,
+.table-bordered>.thead>.tr>.th {
+    border-bottom-width: 2px;
+}
+
+@media(max-width:768px){
+
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+}
