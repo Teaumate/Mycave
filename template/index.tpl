@@ -142,7 +142,7 @@
                       <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#myModal" >
                       <em class="fa fa-pencil"></em>
                       </button>
-                      <form method="post" action="php/delete.php">
+                      <form method="post" action="php/delete.php" id="Dform">
                       <button type="submit" class="delete btn btn-danger {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}"><em class="fa fa-trash"></em></button>
                       <div class="hidden"><input type="text" name="Del_rec" value="{$elt.id}"></div>
                       </form>

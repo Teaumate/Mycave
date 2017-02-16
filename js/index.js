@@ -12,13 +12,20 @@ $(document).ready(function () {
             });
         }
     });
+
     $(".delete").on("click", function (e) {
+        e.preventDefault();
         if ($(this).hasClass('disabled')) {
-            e.preventDefault();
             bootbox.alert({
                 message: "Login required",
                 size: 'small'
             });
+        }else{
+            bootbox.confirm("Are you sure?", function (response) {        
+            if(response) {
+                $('#Dform').submit();
+            }
+    });
         }
     });
     $("#create").on("click", function () {
