@@ -1,5 +1,5 @@
 {include file="header.tpl" title="MyCave"}  
-    <nav class="navbar navbar-default navbar-inverse">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -26,7 +26,7 @@
                           <form class="form" role="form" method="post" action="php/login_post.php" accept-charset="UTF-8" id="login-nav">
                             <div class="form-group">
                               <label class="sr-only" for="exampleInputEmail2">Login</label>
-                              <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Login" name="login" required>
+                              <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Login" name="login" required autofocus>
                             </div>
                             <div class="form-group">
                               <label class="sr-only" for="exampleInputPassword2">Password</label>
@@ -56,11 +56,7 @@
             <h3 class="panel-title">This is MyCave!</h3>
           </div>
           <div class="col col-xs-6 text-right">
-            {if (isset($session['id']) AND isset($session['pseudo']))} <!--************** button Create ****************-->
-                <button type="button" class="btn btn-sm btn-primary btn-create" id="create">Create New</button>
-            {else}
-                <button type="button" class="btn btn-sm btn-primary btn-create disabled" id="create">Create New</button>
-            {/if}
+
           </div>
         </div>
       </div>
@@ -69,14 +65,20 @@
           <div class="thead">
             <div class="tr">
               <!--**************  Header ****************-->
-              <div class="col-sm-1 th"><em class="fa fa-cog"></em></div>
+              <div class="col-sm-1 th">Picture</div>
               <div class="col-sm-2 th">Name</div>
               <div class="col-sm-1 th">Year</div>
               <div class="col-sm-1 th">Grapes</div>
               <div class="col-sm-1 th">Country</div>
               <div class="col-sm-1 th">Region</div>
               <div class="col-sm-4 th">Description</div>
-              <div class="col-sm-1 th">Picture</div>
+              <div class="col-sm-1 th btn-create-head">            
+                {if (isset($session['id']) AND isset($session['pseudo']))} <!--************** button Create ****************-->
+                  <button type="button" class="btn btn-sm btn-primary btn-create" id="create">Create New</button>
+                {else}
+                    <button type="button" class="btn btn-sm btn-primary btn-create disabled" id="create">Create New</button>
+                {/if}
+              </div>
             </div>
           </div>
           <div class="tbody">
@@ -84,29 +86,29 @@
             <!--**************  Create  ****************-->
             <div class="col-sm-12 tr">
               <form class="" method="post" action="php/create.php">
-                <div class="col-sm-1 td">
-                  <input type="submit" class="btn btn-md btn-info" value="OK">
+                <div class=" col-sm-1 td">
+                  <input type="text" class="form-control newrow" name="picture" placeholder="Picture..." required/>
                 </div>
                 <div class=" col-sm-2 td">
-                  <input type="text" class="form-control" name="name" placeholder="Name..." required />
+                  <input type="text" class="form-control newrow" name="name" placeholder="Name..." required autofocus/>
                 </div>
                 <div class=" col-sm-1 td">
-                  <input type="number" class="form-control year" name="year" placeholder="Year..." min="1" required/>
+                  <input type="number" class="form-control newrow year" name="year" placeholder="Year..." min="1" required/>
                 </div>
                 <div class=" col-sm-1 td">
-                  <input type="text" class="form-control" name="grapes" placeholder="Grapes..." required/>
+                  <input type="text" class="form-control newrow" name="grapes" placeholder="Grapes..." required/>
                 </div>
                 <div class=" col-sm-1 td">
-                  <input type="text" class="form-control" name="country" placeholder="Country..." required/>
+                  <input type="text" class="form-control newrow" name="country" placeholder="Country..." required/>
                 </div>
                 <div class=" col-sm-1 td">
-                  <input type="text" class="form-control" name="region" placeholder="Region..." required/>  
+                  <input type="text" class="form-control newrow" name="region" placeholder="Region..." required/>  
                 </div>
                 <div class=" col-sm-4 td">
-                  <input type="text" class="form-control" name="description" placeholder="Description..." required/>
+                  <input type="text" class="form-control newrow" name="description" placeholder="Description..." required/>
                 </div>
-                <div class=" col-sm-1 td">
-                  <input type="text" class="form-control" name="picture" placeholder="Picture..." required/>
+                <div class="col-sm-1 td">
+                  <input type="submit" class="btn btn-md btn-info" value="OK">
                 </div>
               </form>
             </div>
@@ -114,37 +116,37 @@
           {foreach $elts as $elt}
             <div class="row">
                 <div class="col-sm-12 tr">
-                <div class=" col-sm-1 td">
-                    <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#myModal" >
-                    <em class="fa fa-pencil"></em>
-                    </button>
-                    <form method="post" action="php/delete.php">
-                    <button type="submit" class="delete btn btn-danger {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}"><em class="fa fa-trash"></em></button>
-                    <div class="hidden"><input type="text" name="Del_rec" value="{$elt.id}"></div>
-                    </form>
-                </div>
-                <div class="hidden"> <!--      necessaire pour l'update'   -->
-                    {$elt.id}
-                </div>
-                <div class="col-sm-2 td">
-                    {$elt.name}
-                </div>
-                {for $i=2 to 5}
-                <div class=" col-sm-1 td">
-                    {$elt[$i]}
-                </div>
-                {/for}
-                <!-- fin for -->
-                <div class=" col-sm-4 td">
-                    {$elt[6]}      <!--      affiche la colonne  6   -->
-                </div>
-                <div class=" col-sm-4 td hidden">
-                    {$elt.picture}      <!--      necessaire pour récup nom de l'image dans modal  (en fait non) -->
-                </div>
-                <div class=" col-sm-1 td">
-                    <!--      affiche la colonne  7   -->
-                    <img class="img-responsive" src="img/{$elt.picture}" alt="bouteille de {$elt.name}">
-                </div>
+                  <div class=" col-sm-1 td">
+                      <!--      affiche la colonne  7   -->
+                      <img class="img-responsive" src="img/{$elt.picture}" alt="bouteille de {$elt.name}">
+                  </div>
+                  <div class="hidden"> <!--      necessaire pour l'update'   -->
+                      {$elt.id}
+                  </div>
+                  <div class="col-sm-2 td">
+                      {$elt.name}
+                  </div>
+                  {for $i=2 to 5}
+                  <div class=" col-sm-1 td">
+                      {$elt[$i]}
+                  </div>
+                  {/for}
+                  <!-- fin for -->
+                  <div class=" col-sm-4 td">
+                      {$elt[6]}      <!--      affiche la colonne  6   -->
+                  </div>
+                  <div class=" col-sm-4 td hidden">
+                      {$elt.picture}      <!--      necessaire pour récup nom de l'image dans modal  (en fait non) -->
+                  </div>
+                  <div class=" col-sm-1 td">
+                      <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#myModal" >
+                      <em class="fa fa-pencil"></em>
+                      </button>
+                      <form method="post" action="php/delete.php">
+                      <button type="submit" class="delete btn btn-danger {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}"><em class="fa fa-trash"></em></button>
+                      <div class="hidden"><input type="text" name="Del_rec" value="{$elt.id}"></div>
+                      </form>
+                  </div>
                 </div>
             </div>
           {/foreach}

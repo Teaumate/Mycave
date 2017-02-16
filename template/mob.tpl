@@ -1,4 +1,4 @@
-<div class="container visible-xs-block">
+<div class="container visible-xs-block" style="margin-top:65px;">
   <div class="row">
     <div class="col-xs-1">
     <a href="index.php?bottle={$bottle}&direction=left"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></a>

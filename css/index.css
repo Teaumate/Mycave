@@ -1,8 +1,14 @@
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.navbar-default {
+    background-color: #88002d;
+    border-color: #88002d;
+}
 .logo{
     height:50px;
     position: absolute;
     top: 0;
-    background: white;
 }
 
 #newRow{
@@ -24,6 +30,16 @@
     border: 0;
     box-shadow: none;
 }*/
+.col-sm-1.th.btn-create-head{
+    padding-top: 2.8px;
+    padding-bottom: 2.8px;
+}
+.newrow{
+    background: #efefef;
+}
+.panel{
+    margin-top: 70px;
+}
 .table-striped>.tbody>.tr:nth-of-type(2n+1) {
     background-color: rgb(249, 249, 249);
 }
