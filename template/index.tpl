@@ -225,7 +225,7 @@
       </div>
     </div>
   </div>
-<div id="myElement">
+<div id="SwipeScreen">
 {include file="mob.tpl"}  
 </div>
 {include file="footer.tpl"}  
