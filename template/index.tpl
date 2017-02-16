@@ -116,12 +116,14 @@
           {foreach $elts as $elt}
             <div class="row">
                 <div class="col-sm-12 tr">
-                  <div class=" col-sm-1 td">
-                      <!--      affiche la colonne  7   -->
-                      <img class="img-responsive" src="img/{$elt.picture}" alt="bouteille de {$elt.name}">
-                  </div>
                   <div class="hidden"> <!--      necessaire pour l'update'   -->
                       {$elt.id}
+                  </div>
+                  <div class=" col-sm-4 td hidden">
+                      {$elt.picture}      <!--      necessaire pour récup nom de l'image dans modal  (en fait non) -->
+                  </div>
+                  <div class=" col-sm-1 td">     <!--      affiche la colonne  7   -->
+                      <img class="img-responsive" src="img/{$elt.picture}" alt="bouteille de {$elt.name}">
                   </div>
                   <div class="col-sm-2 td">
                       {$elt.name}
@@ -134,9 +136,6 @@
                   <!-- fin for -->
                   <div class=" col-sm-4 td">
                       {$elt[6]}      <!--      affiche la colonne  6   -->
-                  </div>
-                  <div class=" col-sm-4 td hidden">
-                      {$elt.picture}      <!--      necessaire pour récup nom de l'image dans modal  (en fait non) -->
                   </div>
                   <div class=" col-sm-1 td">
                       <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#myModal" >

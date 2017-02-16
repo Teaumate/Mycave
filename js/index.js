@@ -43,13 +43,13 @@ $(document).ready(function () {
         var modal = $(this);
 
         modal.find('input[name=id]').val($.trim($(button.parent().siblings()[0]).text()));
-        modal.find('input[name=name]').val($.trim($(button.parent().siblings()[1]).text()));
-        modal.find('input[name=year]').val($.trim($(button.parent().siblings()[2]).text()));
-        modal.find('input[name=grapes]').val($.trim($(button.parent().siblings()[3]).text()));
-        modal.find('input[name=country]').val($.trim($(button.parent().siblings()[4]).text()));
-        modal.find('input[name=region]').val($.trim($(button.parent().siblings()[5]).text()));
-        modal.find('input[name=description]').val($.trim($(button.parent().siblings()[6]).text()));
-        modal.find('input[name=picture]').val($.trim($(button.parent().siblings()[7]).text()));
+        modal.find('input[name=name]').val($.trim($(button.parent().siblings()[3]).text()));
+        modal.find('input[name=year]').val($.trim($(button.parent().siblings()[4]).text()));
+        modal.find('input[name=grapes]').val($.trim($(button.parent().siblings()[5]).text()));
+        modal.find('input[name=country]').val($.trim($(button.parent().siblings()[6]).text()));
+        modal.find('input[name=region]').val($.trim($(button.parent().siblings()[7]).text()));
+        modal.find('input[name=description]').val($.trim($(button.parent().siblings()[8]).text()));
+        modal.find('input[name=picture]').val($.trim($(button.parent().siblings()[1]).text()));
     });
 
         // if(!($(this).val()>0)){alert('seulement des chiffres')}
