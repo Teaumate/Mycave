@@ -57,13 +57,17 @@ $(document).ready(function () {
 
     // create a simple instance
     // by default, it only adds horizontal recognizers
-    var mc = new Hammer(myElement);
-
+    var mc = new Hammer.Manager(myElement, {
+        recognizers: [
+            // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
+            [Hammer.Swipe,{ direction: Hammer.DIRECTION_VERTICAL }],
+        ]
+    });
     // listen to events...
-    mc.on("swipeleft", function(ev) {
+    mc.on("swipeup", function(ev) {
         $('.fa-arrow-circle-right').click();
     });
-    mc.on("swiperight", function(ev) {
+    mc.on("swipedown", function(ev) {
         $('.fa-arrow-circle-left').click();
     });
 });
