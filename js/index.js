@@ -60,7 +60,10 @@ $(document).ready(function () {
     var mc = new Hammer(myElement);
 
     // listen to events...
-    mc.on("swipe", function(ev) {
+    mc.on("panleft", function(ev) {
         $('.fa-arrow-circle-right').click();
+    });
+    mc.on("panright", function(ev) {
+        $('.fa-arrow-circle-left').click();
     });
 });
