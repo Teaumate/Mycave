@@ -225,5 +225,7 @@
       </div>
     </div>
   </div>
+<div id="myElement">
 {include file="mob.tpl"}  
+</div>
 {include file="footer.tpl"}  
