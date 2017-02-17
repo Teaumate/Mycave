@@ -2,7 +2,7 @@
 session_start();
 
 require 'php/connect.php';
-require("libs/smarty.class.php");
+require("libs/Smarty.class.php");
 
 define('MAIN_PATH', getcwd());
 
