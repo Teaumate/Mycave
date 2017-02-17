@@ -98,7 +98,23 @@ function detectswipe(el,func) {
 
     function myfunction(el,d) {
       //alert("you swiped on element with id '"+el+"' to "+d+" direction");
-      $('.fa-arrow-circle-right').click();
+        switch (d) {
+        case "l":
+            $('.fa-arrow-circle-right').click();
+            break;
+        case "r":
+            $('.fa-arrow-circle-left').click();
+            break;
+        // case "u":
+        //     $('.fa-arrow-circle-right').click();
+        //     break;
+        // case "d":
+        //     $('.fa-arrow-circle-right').click();
+        //     break;
+        default:
+            //Statements executed when none of the values match the value of the expression
+            break;
+        }
     }
     detectswipe('SwipeScreen',myfunction);
 });

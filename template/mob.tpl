@@ -1,7 +1,7 @@
 <div class="container visible-xs-block" style="margin-top:65px;">
   <div class="row">
     <div class="col-xs-1">
-    <a href="index.php?bottle={$bottle}&direction=left"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></a>
+    <a href="index.php?bottle={$bottle}&direction=left" class="hidden"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="col-xs-10 text-center">
       <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#CreateModal" >
@@ -16,7 +16,7 @@
       </form>
     </div>
     <div class="col-xs-1 text-right">
-    <a href="index.php?bottle={$bottle}&direction=right"><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></a>
+    <a href="index.php?bottle={$bottle}&direction=right" class="hidden"><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></a>
     </div>
   </div >
   <form class="form-horizontal">

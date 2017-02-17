@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-17 15:41:33
+/* Smarty version 3.1.30, created on 2017-02-17 17:46:50
   from "/opt/lampp/htdocs/www/MyCave/template/mob.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58a70b9d70c1f6_07441024',
+  'unifunc' => 'content_58a728fa414a30_93529989',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fdc368934ba23d0fba16e2ba36a137418bd2d4f4' => 
     array (
       0 => '/opt/lampp/htdocs/www/MyCave/template/mob.tpl',
-      1 => 1487337212,
+      1 => 1487350003,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58a70b9d70c1f6_07441024 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58a728fa414a30_93529989 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="container visible-xs-block" style="margin-top:65px;">
   <div class="row">
     <div class="col-xs-1">
     <a href="index.php?bottle=<?php echo $_smarty_tpl->tpl_vars['bottle']->value;?>
-&direction=left"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></a>
+&direction=left" class="hidden"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="col-xs-10 text-center">
       <button type="button" class="update btn btn-default <?php if (!(isset($_smarty_tpl->tpl_vars['session']->value['id']) && isset($_smarty_tpl->tpl_vars['session']->value['pseudo']))) {?>disabled<?php }?>" data-toggle="modal" data-target="#CreateModal" >
@@ -43,7 +43,7 @@ function content_58a70b9d70c1f6_07441024 (Smarty_Internal_Template $_smarty_tpl)
     </div>
     <div class="col-xs-1 text-right">
     <a href="index.php?bottle=<?php echo $_smarty_tpl->tpl_vars['bottle']->value;?>
-&direction=right"><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></a>
+&direction=right" class="hidden"><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></a>
     </div>
   </div >
   <form class="form-horizontal">
