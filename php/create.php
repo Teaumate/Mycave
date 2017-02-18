@@ -7,5 +7,5 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){
     $msg='Enregistrement ajouté';
     header('Location: ../index.php?msg='.$msg);
 }
-header('Location: ../index.php');
+header('Location: ../index.php?page='.$_SESSION['page']);
 ?>

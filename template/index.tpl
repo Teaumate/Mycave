@@ -64,7 +64,7 @@
         <div class="table table-striped table-bordered table-list">
           <div class="thead">
             <div class="tr">
-              <!--**************  Header ****************-->
+              <!--************** col Header ****************-->
               <div class="col-sm-1 th">Picture</div>
               <div class="col-sm-2 th">Name</div>
               <div class="col-sm-1 th">Year</div>
@@ -113,7 +113,7 @@
               </form>
             </div>
           </div>
-          {foreach $elts as $elt}
+          {foreach $elts as $elt}     <!--**********************      Affichage des pages *********************   -->
             <div class="row">
                 <div class="col-sm-12 tr">
                   <div class="hidden"> <!--      necessaire pour l'update'   -->
@@ -171,7 +171,7 @@
         </div>
       </div>
     </div>
-    <!--******************************************** Modal Update > xs *****************************************-->
+    <!--******************************************** Modal Update pour ecran > xs ***************************************-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

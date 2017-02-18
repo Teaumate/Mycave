@@ -17,6 +17,6 @@ if(!$resultat){
     session_start();
     $_SESSION['id'] = $resultat['id'];
     $_SESSION['pseudo'] = $login;
-    header('Location: ../index.php');
+    header('Location: ../index.php?page='.$_SESSION['page']);
 }
 ?>

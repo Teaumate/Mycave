@@ -1,3 +1,4 @@
+<!-- *******************************************   page pour mobiles   ******************************************************** -->
 <div class="container visible-xs-block" style="margin-top:65px;">
   <div class="row">
     <div class="col-xs-1">
@@ -66,7 +67,7 @@
     </fieldset>
   </form>
 </div>
-    <!--******************************************** Modal Create *****************************************-->
+    <!--******************************************** page Modal Create *****************************************-->
     <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -115,7 +116,7 @@
         </div>
       </div>
     </div>
-     <!--******************************************** Modal Update *****************************************-->
+     <!--******************************************** page Modal Update *****************************************-->
      <div class="modal fade" id="UpdateModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabl" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

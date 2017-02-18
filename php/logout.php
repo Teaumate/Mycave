@@ -10,4 +10,4 @@ setcookie('login', '');
 setcookie('pass_hache', '');
 
 
-header('Location: ../index.php');
+header('Location: ../index.php?page='.$_SESSION['page']);

@@ -1,13 +1,13 @@
 $(document).ready(function () {
     var d = new Date();
-    var y = d.getFullYear();
-    $('.year').attr('max',y);
+    var y = d.getFullYear();                // recup de l'année en cours
+    $('.year').attr('max',y);               // fixe année max
 
     $(".update").on("click", function (e) {
         if ($(this).hasClass('disabled')) {
             e.stopPropagation();
             bootbox.alert({
-                message: "Login required",
+                message: "Login required",  // demande de se connecter
                 size: 'small'
             });
         }
@@ -17,10 +17,10 @@ $(document).ready(function () {
         e.preventDefault();
         if ($(this).hasClass('disabled')) {
             bootbox.alert({
-                message: "Login required",
+                message: "Login required",  // demande de se connecter
                 size: 'small'
             });
-        }else{
+        }else{                              // confirmer la suppression 
             bootbox.confirm("Are you sure?", function (response) {        
             if(response) {
                 $('#Dform').submit();
@@ -31,10 +31,10 @@ $(document).ready(function () {
     $("#create").on("click", function () {
         if ($(this).hasClass('disabled')) {
             bootbox.alert({
-                message: "Login required",
+                message: "Login required",  // demande de se connecter
                 size: 'small'
             });
-        } else {
+        } else {                            // affiche la ligne de création
             $("#newRow").toggle(400);
         }
     });
@@ -52,7 +52,7 @@ $(document).ready(function () {
         modal.find('input[name=picture]').val($.trim($(button.parent().siblings()[1]).text()));
     });
 
-  //  $('.fa-arrow-circle-right').click();
+/*********************************** gestion du swipe screen *************************************/
 
 function detectswipe(el,func) {
       swipe_det = new Object();
@@ -106,7 +106,7 @@ function detectswipe(el,func) {
             $('.fa-arrow-circle-left').click();
             break;
         // case "u":
-        //     $('.fa-arrow-circle-right').click();
+        //     $('.fa-arrow-circle-left').click();
         //     break;
         // case "d":
         //     $('.fa-arrow-circle-right').click();
