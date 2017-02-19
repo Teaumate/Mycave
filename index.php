@@ -56,6 +56,6 @@ $smarty->assign('elts',$elements);          // les enregistrements de mycave
 $smarty->assign('bottle',$bottle);          // bouteille en cours
 $smarty->assign('session',$_SESSION);
 
-$smarty->display('index.tpl');
+$smarty->display('index.tpl');              // appelle la page principale
 
 ?>

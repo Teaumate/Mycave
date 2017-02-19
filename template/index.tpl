@@ -85,9 +85,14 @@
           <div class="row" id="newRow">
             <!--**************  Create  ****************-->
             <div class="col-sm-12 tr">
-              <form class="" method="post" action="php/create.php">
+              <form class="" method="post" action="php/create.php" enctype="multipart/form-data">
                 <div class=" col-sm-1 td">
-                  <input type="text" class="form-control newrow" name="picture" placeholder="Picture..." required/>
+
+    <div class="input-file-container">
+      <input type="file" name="picture" class="input-file" required/>
+      <label id="lbl" tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label>
+    </div>
+
                 </div>
                 <div class=" col-sm-2 td">
                   <input type="text" class="form-control newrow" name="name" placeholder="Name..." required autofocus/>

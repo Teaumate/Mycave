@@ -34,7 +34,7 @@ $(document).ready(function () {
                 message: "Login required",  // demande de se connecter
                 size: 'small'
             });
-        } else {                            // affiche la ligne de création
+        } else {                            // affiche la ligne de création si connecté
             $("#newRow").toggle(400);
         }
     });
@@ -51,7 +51,13 @@ $(document).ready(function () {
         modal.find('input[name=description]').val($.trim($(button.parent().siblings()[8]).text()));
         modal.find('input[name=picture]').val($.trim($(button.parent().siblings()[1]).text()));
     });
-
+    document.querySelector("html").classList.add('js');
+    var fileInput  = document.querySelector( ".input-file" )
+    fileInput.addEventListener( "change", function( event ) {
+        var tmp = this.value.split('\\');
+        tmp=tmp[tmp.length-1];
+        $('#lbl').text(tmp );
+    }); 
 /*********************************** gestion du swipe screen *************************************/
 
 function detectswipe(el,func) {
