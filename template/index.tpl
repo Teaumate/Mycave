@@ -87,12 +87,10 @@
             <div class="col-sm-12 tr">
               <form class="" method="post" action="php/create.php" enctype="multipart/form-data">
                 <div class=" col-sm-1 td">
-
-    <div class="input-file-container">
-      <input type="file" name="picture" class="input-file" required/>
-      <label id="lbl" tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label>
-    </div>
-
+                  <div class="input-file-container">
+                    <input type="file" name="picture" class="input-file" required/>
+                    <label id="lbl" tabindex="0" for="my-file" class="input-file-trigger">Select Image</label>
+                  </div>
                 </div>
                 <div class=" col-sm-2 td">
                   <input type="text" class="form-control newrow" name="name" placeholder="Name..." required autofocus/>
@@ -146,9 +144,9 @@
                       <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#myModal" >
                       <em class="fa fa-pencil"></em>
                       </button>
-                      <form method="post" action="php/delete.php" id="Dform">
-                      <button type="submit" class="delete btn btn-danger {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}"><em class="fa fa-trash"></em></button>
-                      <div class="hidden"><input type="text" name="Del_rec" value="{$elt.id}"></div>
+                      <form method="post" action="php/delete.php">
+                        <button type="submit" class="delete btn btn-danger {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}"><em class="fa fa-trash"></em></button>
+                        <div class="hidden"><input type="text" name="Del_rec" value="{$elt.id}"></div>
                       </form>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'connect.php';
-
+print_r($_POST['Del_rec']);
 if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){
     $req = $bdd->prepare('DELETE FROM mycave WHERE id=?');
     $req->execute(array($_POST['Del_rec']));

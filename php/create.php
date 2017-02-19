@@ -2,7 +2,6 @@
 session_start();
 require 'connect.php';
 
-$_POST['picture']=$_FILES['picture']['name'];
 define("UPLOAD_DIR", "../img/");
 
 if (!empty($_FILES["picture"])) {
@@ -44,7 +43,7 @@ if (!empty($_FILES["picture"])) {
     chmod(UPLOAD_DIR . $name, 0644);
 }
 
-
+$_POST['picture']=$_FILES['picture']['name'];
 if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){
     $req = $bdd->prepare("INSERT INTO mycave( name, year, grapes, country, region, description, picture) VALUES (?,?,?,?,?,?,?)");
     $req->execute(array($_POST['name'],$_POST['year'],$_POST['grapes'],$_POST['country'],$_POST['region'],$_POST['description'],$_POST['picture']));

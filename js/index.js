@@ -15,6 +15,7 @@ $(document).ready(function () {
 
     $(".delete").on("click", function (e) {
         e.preventDefault();
+        var $form = $(this).parent();
         if ($(this).hasClass('disabled')) {
             bootbox.alert({
                 message: "Login required",  // demande de se connecter
@@ -23,7 +24,7 @@ $(document).ready(function () {
         }else{                              // confirmer la suppression 
             bootbox.confirm("Are you sure?", function (response) {        
             if(response) {
-                $('#Dform').submit();
+                $form.submit();
             }
     });
         }
