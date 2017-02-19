@@ -1,7 +1,6 @@
 <?php
 session_start();
 require 'connect.php';
-require 'create_thumbnail.php'
 
 $_POST['picture']=$_FILES['picture']['name'];
 define("UPLOAD_DIR", "../img/");

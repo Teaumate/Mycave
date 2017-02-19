@@ -101,10 +101,11 @@ body{
 .input-file-container {
   position: relative;
   width: 225px;
+  overflow: hidden;
 } 
 .js .input-file-trigger {
   display: block;
-  padding: 14px 45px;
+  padding: 7px 0px;
   background: #39D2B4;
   color: #fff;
   font-size: 1em;
