@@ -8,4 +8,3 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){
     header('Location: ../index.php?msg='.$msg);
 }
 header('Location: ../index.php?page='.$_SESSION['page']);
-?>

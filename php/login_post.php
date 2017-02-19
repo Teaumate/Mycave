@@ -19,4 +19,3 @@ if(!$resultat){
     $_SESSION['pseudo'] = $login;
     header('Location: ../index.php?page='.$_SESSION['page']);
 }
-?>
