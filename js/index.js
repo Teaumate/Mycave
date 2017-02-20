@@ -120,14 +120,16 @@ function detectswipe(el,func) {
         case "r":
             $('.fa-arrow-circle-left').click();
             break;
-        // case "u":
-        //     $('.fa-arrow-circle-left').click();
-        //     break;
-        // case "d":
-        //     $('.fa-arrow-circle-right').click();
-        //     break;
+        case "u":
+            var $deplacement = $(document).height() - $(window).height();  
+            
+            $('html,body').animate({ scrollTop: $('html').offset().top + $deplacement }, 'slow');
+            break;
+        case "d":
+            $('html,body').animate({ scrollTop: $('html').offset().top }, 'slow');
+            break;
         default:
-            //Statements executed when none of the values match the value of the expression
+           
             break;
         }
     }
