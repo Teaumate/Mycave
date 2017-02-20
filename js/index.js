@@ -3,8 +3,8 @@ $(document).ready(function () {
     var y = d.getFullYear();                // recup de l'année en cours
     $('.year').attr('max',y);               // fixe année max
 
-$('.tr>.td').css('height', $('img.img-responsive').height() + 16);
-// $('.tr>.td').css('height', '300px');
+    $('.tr>.td').css('height', $('img.img-responsive').height() + 16);  // fixe la hauteur des lignes
+
     $(".update").on("click", function (e) {
         if ($(this).hasClass('disabled')) {
             e.stopPropagation();
