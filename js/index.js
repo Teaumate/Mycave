@@ -59,13 +59,25 @@ $(document).ready(function () {
     fileInput.addEventListener( "change", function( event ) {
         var pathAndName = this.value.split('\\');
         Name=pathAndName[pathAndName.length-1];
-        $('#lbl').text(Name);
+        $('#lbl-create').text(Name);
+    });
+    fileInput  = document.querySelector( ".input-file-create-xs" )
+    fileInput.addEventListener( "change", function( event ) {
+        var pathAndName = this.value.split('\\');
+        Name=pathAndName[pathAndName.length-1];
+        $('#lbl-create-xs').text(Name);
     }); 
     var fileInputModal  = document.querySelector( ".input-file-modal" )
     fileInputModal.addEventListener( "change", function( event ) {
         var pathAndName = this.value.split('\\');
         Name=pathAndName[pathAndName.length-1];
         $('#lbl-modal').text(Name);
+    });
+    fileInput  = document.querySelector( ".input-file-update-xs" )
+    fileInput.addEventListener( "change", function( event ) {
+        var pathAndName = this.value.split('\\');
+        Name=pathAndName[pathAndName.length-1];
+        $('#lbl-update-xs').text(Name);
     }); 
 /*********************************** gestion du swipe screen *************************************/
 

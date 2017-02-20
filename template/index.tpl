@@ -89,7 +89,7 @@
                 <div class=" col-sm-1 td">
                   <div class="input-file-container">
                     <input type="file" name="picture" class="input-file input-file-create" required/>
-                    <label id="lbl" tabindex="0" class="input-file-trigger">Select Image</label>
+                    <label id="lbl-create" tabindex="0" class="input-file-trigger">Select Image</label>
                   </div>
                 </div>
                 <div class=" col-sm-2 td">

@@ -78,7 +78,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="php/create.php" method="post">
+            <form action="php/create.php" method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label class="form-control-label">Nom:</label>
                 <input type="text" class="form-control" name="name" required>
@@ -103,10 +103,16 @@
                 <label class="form-control-label">Description:</label>
                 <input type="text" class="form-control" name="description" required>
               </div>
-              <div class="form-group">
+              {*<div class="form-group">
                 <label class="form-control-label">Picture:</label>
                 <input type="text" class="form-control" name="picture" required>
-              </div>
+              </div>*}
+
+                  <div class="input-file-container">
+                    <input type="file" name="picture" class="input-file input-file-create-xs" required/>
+                    <label id="lbl-create-xs" tabindex="0" class="input-file-trigger">Select Image</label>
+                  </div>
+
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">OK</button>
@@ -127,7 +133,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="php/update.php" method="post">
+            <form action="php/update.php" method="post" enctype="multipart/form-data">
               <div class="hidden">
                 <label class="form-control-label">Id:</label>
                 <input type="text" class="form-control" name="id" value="{$elts[0].id}">
@@ -158,8 +164,14 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Picture:</label>
-                <input type="text" class="form-control" name="picture" value="{$elts[0].picture}">
+                <input type="text" class="form-control" name="picture" value="{$elts[0].picture}" disabled>
               </div>
+
+                  <div class="input-file-container">
+                    <input type="file" name="picture-file" class="input-file input-file-update-xs"/>
+                    <label id="lbl-update-xs" tabindex="0" class="input-file-trigger">Change Image</label>
+                  </div>
+
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">OK</button>
