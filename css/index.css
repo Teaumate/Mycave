@@ -103,7 +103,7 @@ body{
   width: 225px;
   overflow: hidden;
 } 
-.js .input-file-trigger {
+.input-file-trigger {
   display: block;
   padding: 7px 0px;
   background: #39D2B4;
@@ -112,7 +112,7 @@ body{
   transition: all .4s;
   cursor: pointer;
 }
-.js .input-file {
+.input-file {
   position: absolute;
   top: 0; left: 0;
   width: 225px;
@@ -120,10 +120,10 @@ body{
   padding: 14px 0;
   cursor: pointer;
 }
-.js .input-file:hover + .input-file-trigger,
-.js .input-file:focus + .input-file-trigger,
-.js .input-file-trigger:hover,
-.js .input-file-trigger:focus {
+.input-file:hover + .input-file-trigger,
+.input-file:focus + .input-file-trigger,
+.input-file-trigger:hover,
+.input-file-trigger:focus {
   background: #34495E;
   color: #39D2B4;
 }

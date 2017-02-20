@@ -16,7 +16,7 @@ $bottle = isset($_GET['bottle']) ? ($_GET['bottle']) : $first; // ou quelle bout
 $nb_elt = 10;                                                   // nb enregistrements par pages
 
 if(!(isset($_GET['direction']))){       // si grand écran
-  $req = $bdd->query("SELECT * FROM mycave LIMIT ". $page*$nb_elt ."," . $nb_elt);
+  $req = $bdd->query("SELECT * FROM mycave ORDER BY id LIMIT ". $page*$nb_elt ."," . $nb_elt);
   $elements=array();
   while ($donnees = $req->fetch()) {
     $elements[]=$donnees;              // tableau de nb_elt bouteilles

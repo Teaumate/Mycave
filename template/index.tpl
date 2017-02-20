@@ -88,8 +88,8 @@
               <form class="" method="post" action="php/create.php" enctype="multipart/form-data">
                 <div class=" col-sm-1 td">
                   <div class="input-file-container">
-                    <input type="file" name="picture" class="input-file" required/>
-                    <label id="lbl" tabindex="0" for="my-file" class="input-file-trigger">Select Image</label>
+                    <input type="file" name="picture" class="input-file input-file-create" required/>
+                    <label id="lbl" tabindex="0" class="input-file-trigger">Select Image</label>
                   </div>
                 </div>
                 <div class=" col-sm-2 td">
@@ -185,7 +185,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="php/update.php" method="post">
+            <form action="php/update.php" method="post" enctype="multipart/form-data">
               <div class="hidden">
                 <label class="form-control-label">Id:</label>
                 <input type="text" class="form-control" name="id">
@@ -216,8 +216,14 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Picture:</label>
-                <input type="text" class="form-control" name="picture">
+                <input type="text" class="form-control" name="picture" disabled>
               </div>
+
+                  <div class="input-file-container">
+                    <input type="file" name="picture-file" class="input-file input-file-modal"/>
+                    <label id="lbl-modal" tabindex="0" class="input-file-trigger">Change Image</label>
+                  </div>
+
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">OK</button>

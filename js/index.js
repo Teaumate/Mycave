@@ -23,12 +23,13 @@ $(document).ready(function () {
             });
         }else{                              // confirmer la suppression 
             bootbox.confirm("Are you sure?", function (response) {        
-            if(response) {
-                $form.submit();
-            }
-    });
+                if(response) {
+                    $form.submit();             // suppression
+                }
+            });
         }
     });
+
     $("#create").on("click", function () {
         if ($(this).hasClass('disabled')) {
             bootbox.alert({
@@ -39,6 +40,7 @@ $(document).ready(function () {
             $("#newRow").toggle(400);
         }
     });
+
     $("#myModal").on("show.bs.modal", function (event) {
         var button = $(event.relatedTarget);
         var modal = $(this);
@@ -52,12 +54,18 @@ $(document).ready(function () {
         modal.find('input[name=description]').val($.trim($(button.parent().siblings()[8]).text()));
         modal.find('input[name=picture]').val($.trim($(button.parent().siblings()[1]).text()));
     });
-    document.querySelector("html").classList.add('js');
-    var fileInput  = document.querySelector( ".input-file" )
+
+    var fileInput  = document.querySelector( ".input-file-create" )
     fileInput.addEventListener( "change", function( event ) {
-        var tmp = this.value.split('\\');
-        tmp=tmp[tmp.length-1];
-        $('#lbl').text(tmp );
+        var pathAndName = this.value.split('\\');
+        Name=pathAndName[pathAndName.length-1];
+        $('#lbl').text(Name);
+    }); 
+    var fileInputModal  = document.querySelector( ".input-file-modal" )
+    fileInputModal.addEventListener( "change", function( event ) {
+        var pathAndName = this.value.split('\\');
+        Name=pathAndName[pathAndName.length-1];
+        $('#lbl-modal').text(Name);
     }); 
 /*********************************** gestion du swipe screen *************************************/
 
