@@ -65,8 +65,8 @@
           <div class="thead">
             <div class="tr">
               <!--************** col Header ****************-->
-              <div class="col-sm-1 th">Picture</div>
-              <div class="col-sm-2 th">Name</div>
+              <div class="col-sm-2 th">Picture</div>
+              <div class="col-sm-1 th">Name</div>
               <div class="col-sm-1 th">Year</div>
               <div class="col-sm-1 th">Grapes</div>
               <div class="col-sm-1 th">Country</div>
@@ -86,13 +86,13 @@
             <!--**************  Create  ****************-->
             <div class="col-sm-12 tr">
               <form class="" method="post" action="php/create.php" enctype="multipart/form-data">
-                <div class=" col-sm-1 td">
+                <div class=" col-sm-2 td">
                   <div class="input-file-container">
                     <input type="file" name="picture" class="input-file input-file-create" required/>
                     <label id="lbl-create" tabindex="0" class="input-file-trigger">Select Image</label>
                   </div>
                 </div>
-                <div class=" col-sm-2 td">
+                <div class=" col-sm-1 td">
                   <input type="text" class="form-control newrow" name="name" placeholder="Name..." required autofocus/>
                 </div>
                 <div class=" col-sm-1 td">
@@ -125,10 +125,10 @@
                   <div class=" col-sm-4 td hidden">
                       {$elt.picture}      <!--      necessaire pour récup nom de l'image dans modal  (en fait non) -->
                   </div>
-                  <div class=" col-sm-1 td">     <!--      affiche la colonne  7   -->
+                  <div class=" col-sm-2 td">     <!--      affiche la colonne  7 (image)  -->
                       <img class="img-responsive" src="img/{$elt.picture}" alt="bouteille de {$elt.name}">
                   </div>
-                  <div class="col-sm-2 td">
+                  <div class="col-sm-1 td">
                       {$elt.name}
                   </div>
                   {for $i=2 to 5}
