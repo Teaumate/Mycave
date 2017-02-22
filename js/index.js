@@ -57,11 +57,11 @@ $(document).ready(function () {
         modal.find('input[name=picture]').val($.trim($(button.parent().siblings()[1]).text()));
     });
 
-    var fileInput  = document.querySelector( ".input-file-create" )
+    var fileInput  = document.querySelector( ".input-file-create" )     // apres selection de l'image
     fileInput.addEventListener( "change", function( event ) {
         var pathAndName = this.value.split('\\');
         Name=pathAndName[pathAndName.length-1];
-        $('#lbl-create').text(Name);
+        $('#lbl-create').text(Name);                                    // affiche le nom de l'image
     });
     fileInput  = document.querySelector( ".input-file-create-xs" )
     fileInput.addEventListener( "change", function( event ) {
@@ -79,7 +79,13 @@ $(document).ready(function () {
     fileInput.addEventListener( "change", function( event ) {
         var pathAndName = this.value.split('\\');
         Name=pathAndName[pathAndName.length-1];
-        $('#lbl-update-xs').text(Name);
+        $('#lbl-update-xs').text(Name);                                 // ***************************
+    }); 
+
+    selectName  = document.querySelector( "select[name=name]" )         // gestion du select sur smartphone
+    selectName.addEventListener( "change", function( event ) {
+        OptionValue = selectName.value;
+        window.location = 'index.php?bottle='+OptionValue+'&direction=center'; // ***************************
     }); 
 /*********************************** gestion du swipe screen *************************************/
 

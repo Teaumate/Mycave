@@ -1,25 +1,28 @@
 <!-- *******************************************   page pour mobiles   ******************************************************** -->
 <div class="container visible-xs-block" style="margin-top:65px;">
-  <div class="row">
+  <div class="row">     <!-- entête bouttons *********** -->
     <div class="col-xs-1">
-    <a href="index.php?bottle={$bottle}&direction=left" class="hidden"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></a>
+      <a href="index.php?bottle={$bottle}&direction=left" class="hidden"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="col-xs-10 text-center">
       <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#CreateModal" >
         <em class="fa fa-plus"></em>
       </button>
       <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#UpdateModal" >
-      <i class="fa fa-pencil"></i>
+        <i class="fa fa-pencil"></i>
       </button>
       <form method="post" action="php/delete.php" style="display: inline;">
-        <button type="submit" class="delete btn btn-danger {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" ><i class="fa fa-trash"></i></button>
-        <div class="hidden"><input type="text" name="Del_rec" value="{$elts[0].id}"></div>
+        <button type="submit" class="delete btn btn-danger {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" >
+          <i class="fa fa-trash"></i>
+        </button>
+        <div class="hidden"><input type="text" name="Del_rec" value="{$elts[0].id}"></div> <!-- masqué on récup l'ID -->
       </form>
+      {html_options name=name options=$myOptions selected=$bottle}
     </div>
     <div class="col-xs-1 text-right">
     <a href="index.php?bottle={$bottle}&direction=right" class="hidden"><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></a>
     </div>
-  </div >
+  </div >       <!-- fin entête bouttons *************** -->
   <form class="form-horizontal">
     <fieldset style="margin-top:8px;">
     <div class="form-group">

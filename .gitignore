@@ -1,5 +1,6 @@
 php/connect.php
 templates_c/**
 #libs/**
-#img/**
+img/**
 .vscode
+/nbproject/private/
