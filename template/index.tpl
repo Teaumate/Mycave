@@ -216,7 +216,8 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Picture:</label>
-                <input type="text" class="form-control" name="picture" disabled>
+                <label class="form-control-label">{$elts[0].picture}</label>
+                <input type="text" class="form-control hidden" name="picture">
               </div>
 
                   <div class="input-file-container">

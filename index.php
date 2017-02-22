@@ -28,7 +28,7 @@ if(!(isset($_GET['direction']))){       // si grand écran
   while ($donnees = $req->fetch()) {
     $elements[]=$donnees;              // tableau de (nb_elt) bouteilles
   }
-}elseif($_GET['direction']=='left'){  // *********************    si smartphone
+}elseif($_GET['direction']=='left'){  // *********************    si smartphone  ***************
   if($bottle !== $first){
     $req = $bdd->query("SELECT * FROM mycave WHERE id < ". $bottle ." ORDER BY id DESC LIMIT 1");
   }else{
@@ -49,18 +49,19 @@ if(!(isset($_GET['direction']))){       // si grand écran
   $elements[]=$donnees;
   $_GET['direction']=NULL;
 }else{
-  $req = $bdd->query("SELECT * FROM mycave WHERE id = ". $bottle);
+  $req = $bdd->query("SELECT * FROM mycave WHERE id = ". $bottle);    // choix d'une bouteille particulière
   $donnees = $req->fetch();
   $bottle = $donnees[0];
   $elements[]=$donnees;
   $_GET['direction']=NULL;
 }
+
 $_SESSION['page'] = $page;    // page en cours pour retour de update, delete ...
 $req = $bdd->query("SELECT COUNT(*) AS nb_rec FROM mycave"); // calcul nb enregistrements
 $donnees = $req->fetch();
 $nb_pages = ceil($donnees[0]/$nb_elt);      // calcul nb pages
 
-$smarty = new Smarty();                 // nouvel objet smarty et recup des variable php dans smarty
+$smarty = new Smarty();                 // nouvel objet smarty et recup des variables php dans smarty
 $smarty->setTemplateDir('./template');
 $smarty->assign('nb_rec',$donnees[0]);      // nombre de lignes dans mycave
 $smarty->assign('nb_pages',$nb_pages);      // nombre de pages
@@ -68,6 +69,6 @@ $smarty->assign('page',$page);              // page courrente
 $smarty->assign('elts',$elements);          // les enregistrements de mycave
 $smarty->assign('bottle',$bottle);          // bouteille en cours
 $smarty->assign('session',$_SESSION);
-$smarty->assign('myOptions', $optNames);
+$smarty->assign('myOptions', $optNames);    // la liste des bouteilles
 
 $smarty->display('index.tpl');              // appelle la page principale

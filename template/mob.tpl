@@ -17,7 +17,7 @@
         </button>
         <div class="hidden"><input type="text" name="Del_rec" value="{$elts[0].id}"></div> <!-- masqué on récup l'ID -->
       </form>
-      {html_options name=name options=$myOptions selected=$bottle}
+      {*{html_options name=name options=$myOptions selected=$bottle}*}
     </div>
     <div class="col-xs-1 text-right">
     <a href="index.php?bottle={$bottle}&direction=right" class="hidden"><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></a>
@@ -28,7 +28,8 @@
     <div class="form-group">
       <label class="col-xs-3 control-label text-right">Name</label>  
       <div class="col-xs-9">
-      <input disabled name="name" type="text" value="{$elts[0].name}" class="form-control input-xs name">
+      {*<input disabled name="name" type="text" value="{$elts[0].name}" class="form-control input-xs name">*}
+      {html_options name=name options=$myOptions selected=$bottle}
       </div>
     </div>
     <div class="form-group">
@@ -167,11 +168,12 @@
               </div>
               <div class="form-group">
                 <label class="form-control-label">Picture:</label>
-                <input type="text" class="form-control" name="picture" value="{$elts[0].picture}" disabled>
+                <label class="form-control-label">{$elts[0].picture}</label>
+                <input type="text" class="form-control hidden" name="picture" value="{$elts[0].picture}">
               </div>
 
                   <div class="input-file-container">
-                    <input type="file" name="picture-file" class="input-file input-file-update-xs"/>
+                    <input type="file" name="picture-file" class="input-file input-file-update-xs">
                     <label id="lbl-update-xs" tabindex="0" class="input-file-trigger">Change Image</label>
                   </div>
 
