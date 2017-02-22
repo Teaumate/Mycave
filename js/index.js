@@ -83,6 +83,8 @@ $(document).ready(function () {
     }); 
 
     selectName  = document.querySelector( "select[name=name]" )         // gestion du select sur smartphone
+    selectName.className += ' selectpicker show-tick show-menu-arrow form-control';  // style du selecteur
+    $('.selectpicker').selectpicker('show');
     selectName.addEventListener( "change", function( event ) {
         OptionValue = selectName.value;
         window.location = 'index.php?bottle='+OptionValue+'&direction=center'; // ***************************
@@ -107,7 +109,7 @@ function detectswipe(el,func) {
         swipe_det.sY = t.screenY;
       },false);
       ele.addEventListener('touchmove',function(e){
-        e.preventDefault();
+//        e.preventDefault();
         var t = e.touches[0];
         swipe_det.eX = t.screenX; 
         swipe_det.eY = t.screenY;    
@@ -140,14 +142,14 @@ function detectswipe(el,func) {
         case "r":
             $('.fa-arrow-circle-left').click();
             break;
-        case "u":
-            var $deplacement = $(document).height() - $(window).height();  
+        // case "u":
+        //     var $deplacement = $(document).height() - $(window).height();  
             
-            $('html,body').animate({ scrollTop: $('html').offset().top + $deplacement }, 'slow');
-            break;
-        case "d":
-            $('html,body').animate({ scrollTop: $('html').offset().top }, 'slow');
-            break;
+        //     $('html,body').animate({ scrollTop: $('html').offset().top + $deplacement }, 'slow');
+        //     break;
+        // case "d":
+        //     $('html,body').animate({ scrollTop: $('html').offset().top }, 'slow');
+        //     break;
         default:
            
             break;
