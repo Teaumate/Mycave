@@ -6,6 +6,7 @@ require("libs/Smarty.class.php");
 
 define('MAIN_PATH', getcwd());
 
+
 $MinMax = $bdd->query("SELECT MIN(id) AS First, MAX(id) AS Last FROM mycave"); // determine 1ere et derniere bouteille de mycave
 $first_Last = $MinMax->fetch();
 $first=$first_Last[0];                   // 1er enregistrement
@@ -13,22 +14,23 @@ $last=$first_Last[1];                    // dernier enregistrement
 
 $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
 $bottle = filter_input(INPUT_GET, 'bottle', FILTER_SANITIZE_NUMBER_INT);
+$direction = filter_input(INPUT_GET, 'direction',FILTER_SANITIZE_STRING);
 
 $page = ($page > 0) ? $page : 0;            // quelle page afficher
 $bottle = ($bottle > 0) ? $bottle : $first; // ou quelle bouteille si smartphone
 $nb_elt = 10;                               // nb enregistrements par pages
 
 $req = $bdd->query("SELECT id, name FROM mycave ORDER BY id");    // pour le <select> du smartphone
-$ListName=$req->fetchAll(PDO::FETCH_ASSOC);
+$ListName=$req->fetchAll(PDO::FETCH_ASSOC);                       // on récupère tous les noms + id
 $optNames = array_column($ListName, 'name', 'id');
 
-if(!(isset($_GET['direction']))){       // si grand écran
+if(!(isset($direction))){       // si grand écran
   $req = $bdd->query("SELECT * FROM mycave ORDER BY id LIMIT ". $page*$nb_elt ."," . $nb_elt);
   $elements=array();
   while ($donnees = $req->fetch()) {
     $elements[]=$donnees;              // tableau de (nb_elt) bouteilles
   }
-}elseif($_GET['direction']=='left'){  // *********************    si smartphone  ***************
+}elseif($direction=='left'){  // *********************    si smartphone  ***************
   if($bottle !== $first){
     $req = $bdd->query("SELECT * FROM mycave WHERE id < ". $bottle ." ORDER BY id DESC LIMIT 1");
   }else{
@@ -37,8 +39,8 @@ if(!(isset($_GET['direction']))){       // si grand écran
   $donnees = $req->fetch();
   $bottle = $donnees[0];
   $elements[]=$donnees;
-  $_GET['direction']=NULL;
-}elseif($_GET['direction']=='right'){
+  $direction=NULL;
+}elseif($direction=='right'){
   if($bottle !== $last){
     $req = $bdd->query("SELECT * FROM mycave WHERE id > ". $bottle ." ORDER BY id LIMIT 1");
   }else{
@@ -47,13 +49,13 @@ if(!(isset($_GET['direction']))){       // si grand écran
   $donnees = $req->fetch();
   $bottle = $donnees[0];
   $elements[]=$donnees;
-  $_GET['direction']=NULL;
+  $direction=NULL;
 }else{
   $req = $bdd->query("SELECT * FROM mycave WHERE id = ". $bottle);    // choix d'une bouteille particulière
   $donnees = $req->fetch();
   $bottle = $donnees[0];
   $elements[]=$donnees;
-  $_GET['direction']=NULL;
+  $direction=NULL;
 }
 
 $_SESSION['page'] = $page;    // page en cours pour retour de update, delete ...

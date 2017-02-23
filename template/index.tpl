@@ -119,13 +119,13 @@
           {foreach $elts as $elt}     <!--**********************      Affichage des pages *********************   -->
             <div class="row">
                 <div class="col-sm-12 tr">
-                  <div class="hidden"> <!--      necessaire pour l'update'   -->
+                  <div class="hidden"> <!--  récup l'ID necessaire pour l'update   -->
                       {$elt.id}
                   </div>
                   <div class=" col-sm-4 td hidden">
-                      {$elt.picture}      <!--      necessaire pour récup nom de l'image dans modal  (en fait non) -->
+                      {$elt.picture}      <!--      necessaire pour récup nom de l'image dans modal via js -->
                   </div>
-                  <div class=" col-sm-2 td">     <!--      affiche la colonne  7 (image)  -->
+                  <div class=" col-sm-2 td">     <!--      affiche l'image  -->
                       <img class="img-responsive" src="img/{$elt.picture}" alt="bouteille de {$elt.name}">
                   </div>
                   <div class="col-sm-1 td">
@@ -138,7 +138,7 @@
                   {/for}
                   <!-- fin for -->
                   <div class=" col-sm-4 td">
-                      {$elt[6]}      <!--      affiche la colonne  6   -->
+                      {$elt[6]}      <!--      affiche la description   -->
                   </div>
                   <div class=" col-sm-1 td">
                       <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#myModal" >

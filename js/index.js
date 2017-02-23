@@ -1,9 +1,12 @@
 $(document).ready(function () {
     var d = new Date();
     var y = d.getFullYear();                // recup de l'année en cours
-    $('.year').attr('max',y);               // fixe année max
+    $('.year').attr('max',y);               // fixe année max pour le champ 'year'
 
-    $('.tr>.td').css('height', $('img.img-responsive').height() + 16);  // fixe la hauteur des lignes
+    $('.tr>.td').css('height', $('img.img-responsive').height() + 16);  // fixe la hauteur des lignes = hauteur(image) + 16
+
+/************************ gestion des boutons update delete et create *********************************/
+/************************ demande à se connecter ou confirmer délétion ********************************/
 
     $(".update").on("click", function (e) {
         if ($(this).hasClass('disabled')) {
@@ -42,7 +45,7 @@ $(document).ready(function () {
             $("#newRow").toggle(400);
         }
     });
-
+/***************************** récupère et affiche les champs de la feuille modale update **************** */
     $("#myModal").on("show.bs.modal", function (event) {
         var button = $(event.relatedTarget);
         var modal = $(this);
@@ -56,6 +59,8 @@ $(document).ready(function () {
         modal.find('input[name=description]').val($.trim($(button.parent().siblings()[8]).text()));
         modal.find('input[name=picture]').val($.trim($(button.parent().siblings()[1]).text()));
     });
+
+/***********************************  affichage du nom de l'image après sélection (upload)*******************/
 
     var fileInput  = document.querySelector( ".input-file-create" )     // apres selection de l'image
     fileInput.addEventListener( "change", function( event ) {
@@ -79,15 +84,16 @@ $(document).ready(function () {
     fileInput.addEventListener( "change", function( event ) {
         var pathAndName = this.value.split('\\');
         Name=pathAndName[pathAndName.length-1];
-        $('#lbl-update-xs').text(Name);                                 // ***************************
+        $('#lbl-update-xs').text(Name);                                 
     }); 
+/***********************************  gestion du choix des vins sur smartphone (balise select) ***************/
 
-    selectName  = document.querySelector( "select[name=name]" )         // gestion du select sur smartphone
-    selectName.className += ' selectpicker show-tick show-menu-arrow form-control';  // style du selecteur
+    selectName  = document.querySelector( "select[name=name]" )          
+    selectName.className += ' selectpicker show-tick show-menu-arrow form-control';  // définit les styles du selecteur
     $('.selectpicker').selectpicker('show');
     selectName.addEventListener( "change", function( event ) {
         OptionValue = selectName.value;
-        window.location = 'index.php?bottle='+OptionValue+'&direction=center'; // ***************************
+        window.location = 'index.php?bottle='+OptionValue+'&direction=center'; 
     }); 
 /*********************************** gestion du swipe screen *************************************/
 
