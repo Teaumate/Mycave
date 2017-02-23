@@ -1,8 +1,9 @@
 <?php
 include 'connect.php';
+$pswd = filter_input(INPUT_POST, 'pswd', FILTER_SANITIZE_STRING);
+$login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
 
-$pass_hash = sha1($_POST['pswd'] );
-$login = $_POST['login'];
+$pass_hash = sha1($pswd);
 
 $req = $bdd->prepare('SELECT id FROM user WHERE login= :loginReq AND pswd = :pswdReq');
 $req->execute(array(

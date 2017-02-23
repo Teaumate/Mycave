@@ -1,10 +1,11 @@
 <?php
 session_start();
 require 'connect.php';
-print_r($_POST['Del_rec']);
+$id = filter_input(INPUT_POST, 'Del_rec', FILTER_SANITIZE_NUMBER_INT);
+
 if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){
     $req = $bdd->prepare('DELETE FROM mycave WHERE id=?');
-    $req->execute(array($_POST['Del_rec']));
+    $req->execute(array($id));
     $msg='Enregistrement supprimé';
     header('Location: ../index.php?msg='.$msg);
 }

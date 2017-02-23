@@ -62,25 +62,25 @@ $(document).ready(function () {
 
 /***********************************  affichage du nom de l'image après sélection (upload)*******************/
 
-    var fileInput  = document.querySelector( ".input-file-create" )     // apres selection de l'image
+    var fileInput  = document.querySelector( ".input-file-create" );     // apres selection de l'image
     fileInput.addEventListener( "change", function( event ) {
         var pathAndName = this.value.split('\\');
         Name=pathAndName[pathAndName.length-1];
         $('#lbl-create').text(Name);                                    // affiche le nom de l'image
     });
-    fileInput  = document.querySelector( ".input-file-create-xs" )
+    fileInput  = document.querySelector( ".input-file-create-xs" );
     fileInput.addEventListener( "change", function( event ) {
         var pathAndName = this.value.split('\\');
         Name=pathAndName[pathAndName.length-1];
         $('#lbl-create-xs').text(Name);
     }); 
-    var fileInputModal  = document.querySelector( ".input-file-modal" )
+    var fileInputModal  = document.querySelector( ".input-file-modal" );
     fileInputModal.addEventListener( "change", function( event ) {
         var pathAndName = this.value.split('\\');
         Name=pathAndName[pathAndName.length-1];
         $('#lbl-modal').text(Name);
     });
-    fileInput  = document.querySelector( ".input-file-update-xs" )
+    fileInput  = document.querySelector( ".input-file-update-xs" );
     fileInput.addEventListener( "change", function( event ) {
         var pathAndName = this.value.split('\\');
         Name=pathAndName[pathAndName.length-1];
@@ -88,7 +88,7 @@ $(document).ready(function () {
     }); 
 /***********************************  gestion du choix des vins sur smartphone (balise select) ***************/
 
-    selectName  = document.querySelector( "select[name=name]" )          
+    selectName  = document.querySelector( "select[name=name]" );          
     selectName.className += ' selectpicker show-tick show-menu-arrow form-control';  // définit les styles du selecteur
     $('.selectpicker').selectpicker('show');
     selectName.addEventListener( "change", function( event ) {

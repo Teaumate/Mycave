@@ -4,10 +4,19 @@ require 'connect.php';
 
 define("UPLOAD_DIR", "../img/");
 
-if (!empty($_FILES["picture-file"]["name"])) {
-    $picture = $_FILES["picture-file"];
+$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+$year = filter_input(INPUT_POST, 'year', FILTER_SANITIZE_NUMBER_INT);
+$grapes = filter_input(INPUT_POST, 'grapes', FILTER_SANITIZE_STRING);
+$country = filter_input(INPUT_POST, 'country', FILTER_SANITIZE_STRING);
+$region = filter_input(INPUT_POST, 'region', FILTER_SANITIZE_STRING);
+$description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
+$picture = filter_input(INPUT_POST, 'picture', FILTER_SANITIZE_STRING);
+$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-    if ($picture["error"] !== UPLOAD_ERR_OK) {
+if (!empty($_FILES["picture-file"]["name"])) {
+    $pictureF = $_FILES["picture-file"];
+
+    if ($pictureF["error"] !== UPLOAD_ERR_OK) {
         echo "<p>An error occurred.</p>";
         exit;
     }
@@ -21,13 +30,13 @@ if (!empty($_FILES["picture-file"]["name"])) {
     }
 
     // ensure a safe filename
-    $name = preg_replace("/[^A-Z0-9._-]/i", "_", $picture["name"]);
+    $namePic = preg_replace("/[^A-Z0-9._-]/i", "_", $pictureF["name"]);
 
     // don't overwrite an existing file
     // preserve file from temporary directory
-    if(!file_exists(UPLOAD_DIR . $name)){
-        $success = move_uploaded_file($picture["tmp_name"],
-            UPLOAD_DIR . $name);
+    if(!file_exists(UPLOAD_DIR . $namePic)){
+        $success = move_uploaded_file($pictureF["tmp_name"],
+            UPLOAD_DIR . $namePic);
         if (!$success) { 
             echo "<p>Unable to save file.</p>";
             exit;
@@ -35,14 +44,14 @@ if (!empty($_FILES["picture-file"]["name"])) {
     }
 
     // set proper permissions on the new file
-    chmod(UPLOAD_DIR . $name, 0644);
+    chmod(UPLOAD_DIR . $namePic, 0644);
 }
 
-$_POST['picture']=($name!=NULL)?$name:$_POST['picture'];
+$picture=($namePic!=NULL)?$namePic:$picture;
 
 if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){
     $req = $bdd->prepare("UPDATE `mycave` SET `name`=?,`year`=?,`grapes`=?,`country`=?,`region`=?,`description`=?,`picture`=? WHERE id=?");
-    $req->execute(array($_POST['name'],$_POST['year'],$_POST['grapes'],$_POST['country'],$_POST['region'],$_POST['description'],$_POST['picture'],$_POST['id']));
+    $req->execute(array($name, $year, $grapes, $country, $region, $description, $picture, $id));
     $msg='Enregistrement modifié';
     header('Location: ../index.php?msg='.$msg);
 }
