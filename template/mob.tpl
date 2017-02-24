@@ -1,5 +1,5 @@
 <!-- *******************************************   page pour mobiles   ******************************************************** -->
-<div class="container visible-xs-block" style="margin-top:65px;">
+<div class="container visible-xs-block container-xs">
   <div class="row">     <!-- entête bouttons *********** -->
     <div class="col-xs-1">
       <a href="index.php?bottle={$bottle}&direction=left" class="hidden"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></a>
@@ -11,7 +11,7 @@
       <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#UpdateModal" >
         <i class="fa fa-pencil"></i>
       </button>
-      <form method="post" action="php/delete.php" style="display: inline;">
+      <form method="post" action="php/delete.php" class="btn-delete-xs">
         <button type="submit" class="delete btn btn-danger {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" >
           <i class="fa fa-trash"></i>
         </button>
@@ -24,12 +24,11 @@
     </div>
   </div >       <!-- fin entête bouttons *************** -->
   <form class="form-horizontal">
-    <fieldset style="margin-top:8px;">
+    <fieldset class="fieldset-xs">
     <div class="form-group">
       <label class="col-xs-3 control-label text-right">Name</label>  
       <div class="col-xs-9">
-      {*<input disabled name="name" type="text" value="{$elts[0].name}" class="form-control input-xs name">*}
-      {html_options name=name options=$myOptions selected=$bottle}
+        {html_options name=name options=$myOptions selected=$bottle}
       </div>
     </div>
     <div class="form-group">
@@ -107,10 +106,6 @@
                 <label class="form-control-label">Description:</label>
                 <input type="text" class="form-control" name="description" required>
               </div>
-              {*<div class="form-group">
-                <label class="form-control-label">Picture:</label>
-                <input type="text" class="form-control" name="picture" required>
-              </div>*}
 
                   <div class="input-file-container">
                     <input type="file" name="picture" class="input-file input-file-create-xs" required/>

@@ -220,10 +220,10 @@
                 <input type="text" class="form-control hidden" name="picture">
               </div>
 
-                  <div class="input-file-container">
-                    <input type="file" name="picture-file" class="input-file input-file-modal"/>
-                    <label id="lbl-modal" tabindex="0" class="input-file-trigger">Change Image</label>
-                  </div>
+              <div class="input-file-container">
+                <input type="file" name="picture-file" class="input-file input-file-modal"/>
+                <label id="lbl-modal" tabindex="0" class="input-file-trigger">Change Image</label>
+              </div>
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
