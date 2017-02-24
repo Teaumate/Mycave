@@ -51,14 +51,7 @@
     <div class="col-md-12 hidden-xs"> <!-- *********************************** debut panel **********************************-->
     <div class="panel panel-default panel-table">
       <div class="panel-heading">
-        <div class="row">
-          <div class="col col-xs-6">
-            <h3 class="panel-title">This is MyCave!</h3>
-          </div>
-          <div class="col col-xs-6 text-right">
-
-          </div>
-        </div>
+        <h3 class="panel-title  text-center">This is MyCave!</h3>
       </div>
       <div class="panel-body">
         <div class="table table-striped table-bordered table-list">
@@ -158,9 +151,9 @@
       </div>
       <div class="panel-footer">
         <div class="row">
-          <div class="col col-xs-4">Page {$page+1} of {$nb_pages}
+          <div class="col-xs-4">Page {$page+1} of {$nb_pages}
           </div>
-          <div class="col col-xs-8">
+          <div class="col-xs-8">
             <ul class="pagination hidden-xs pull-right">
               {for $i=1 to $nb_pages}
                 <li><a href="index.php?page={$i-1}">{$i}</a></li>
