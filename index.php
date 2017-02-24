@@ -27,8 +27,11 @@ $optNames = array_column($ListName, 'name', 'id');
 if(!(isset($direction))){       // si grand écran
   $req = $bdd->query("SELECT * FROM mycave ORDER BY id LIMIT ". $page*$nb_elt ."," . $nb_elt);
   $elements=array();
+  $i=$nb_elt;
   while ($donnees = $req->fetch()) {
-    $elements[]=$donnees;              // tableau de (nb_elt) bouteilles
+    $elem = array_merge($donnees,array('ordre'=>$i));
+    $elements[]=$elem;              // tableau de (nb_elt) bouteilles
+    $i--;
   }
 }elseif($direction=='left'){  // *********************    si smartphone  ***************
   if($bottle !== $first){

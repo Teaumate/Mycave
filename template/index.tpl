@@ -48,7 +48,7 @@
       </div>
       <!-- /.container-fluid -->
     </nav>
-    <div class="col-md-12 hidden-xs"> <!-- ******************************************************************************-->
+    <div class="col-md-12 hidden-xs"> <!-- *********************************** debut panel **********************************-->
     <div class="panel panel-default panel-table">
       <div class="panel-heading">
         <div class="row">
@@ -65,8 +65,8 @@
           <div class="thead">
             <div class="tr">
               <!--************** col Header ****************-->
-              <div class="col-sm-2 th">Picture</div>
-              <div class="col-sm-1 th">Name</div>
+              <div class="col-sm-1 th">Picture</div>
+              <div class="col-sm-2 th">Name</div>
               <div class="col-sm-1 th">Year</div>
               <div class="col-sm-1 th">Grapes</div>
               <div class="col-sm-1 th">Country</div>
@@ -86,13 +86,13 @@
             <!--**************  Create  ****************-->
             <div class="col-sm-12 tr">
               <form class="" method="post" action="php/create.php" enctype="multipart/form-data">
-                <div class=" col-sm-2 td">
+                <div class=" col-sm-1 td">
                   <div class="input-file-container">
                     <input type="file" name="picture" class="input-file input-file-create" required/>
                     <label id="lbl-create" tabindex="0" class="input-file-trigger">Select Image</label>
                   </div>
                 </div>
-                <div class=" col-sm-1 td">
+                <div class=" col-sm-2 td">
                   <input type="text" class="form-control newrow" name="name" placeholder="Name..." required autofocus/>
                 </div>
                 <div class=" col-sm-1 td">
@@ -122,13 +122,13 @@
                   <div class="hidden"> <!--  récup l'ID necessaire pour l'update   -->
                       {$elt.id}
                   </div>
-                  <div class=" col-sm-4 td hidden">
+                  <div class="hidden">
                       {$elt.picture}      <!--      necessaire pour récup nom de l'image dans modal via js -->
                   </div>
-                  <div class=" col-sm-2 td">     <!--      affiche l'image  -->
-                      <img class="img-responsive" src="img/{$elt.picture}" alt="bouteille de {$elt.name}">
+                  <div class=" col-sm-1 td {$elt.ordre}" style="overflow: visible; z-index: {$elt.ordre};">     <!--      affiche l'image  -->
+                      <img class="img-responsive effectfront" src="img/{$elt.picture}" alt="bouteille de {$elt.name}">
                   </div>
-                  <div class="col-sm-1 td">
+                  <div class="col-sm-2 td">
                       {$elt.name}
                   </div>
                   {for $i=2 to 5}

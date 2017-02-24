@@ -2,8 +2,8 @@ $(document).ready(function () {
     var d = new Date();
     var y = d.getFullYear();                // recup de l'année en cours
     $('.year').attr('max',y);               // fixe année max pour le champ 'year'
-
-    $('.tr>.td').css('height', $('img.img-responsive').height() + 16);  // fixe la hauteur des lignes = hauteur(image) + 16
+    var $lineHeight = Math.max($('img.img-responsive').height() + 16, 141);
+    $('.tr>.td').css('height', $lineHeight);  // fixe la hauteur des lignes = hauteur(image) + 16
 
 /************************ gestion des boutons update delete et create *********************************/
 /************************ demande à se connecter ou confirmer délétion ********************************/
