@@ -25,7 +25,7 @@ $ListName=$req->fetchAll(PDO::FETCH_ASSOC);                       // on récupè
 $optNames = array_column($ListName, 'name', 'id');
 
 if(!(isset($direction))){       // si grand écran
-  $req = $bdd->query("SELECT * FROM mycave ORDER BY id LIMIT ". $page*$nb_elt ."," . $nb_elt);
+  $req = $bdd->query("SELECT * FROM mycave ORDER BY name LIMIT ". $page*$nb_elt ."," . $nb_elt);
   $elements=array();
   $i=$nb_elt;
   while ($donnees = $req->fetch()) {

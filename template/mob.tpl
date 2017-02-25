@@ -34,37 +34,36 @@
     <div class="form-group">
       <label class="col-xs-3 control-label text-right">Year</label>  
       <div class="col-xs-9">
-      <input disabled name="Year" type="number" value="{$elts[0].year}" class="form-control input-xs year">
+        <input disabled name="Year" type="number" value="{$elts[0].year}" class="form-control input-xs year">
       </div>
     </div>
     <div class="form-group">
       <label class="col-xs-3 control-label text-right">Grapes</label>  
       <div class="col-xs-9">
-      <input disabled name="Grapes" type="text" value="{$elts[0].grapes}" class="form-control input-xs grapes">
+        <input disabled name="Grapes" type="text" value="{$elts[0].grapes}" class="form-control input-xs grapes">
       </div>
     </div>
     <div class="form-group">
       <label class="col-xs-3 control-label text-right">Country</label>  
       <div class="col-xs-9">
-      <input disabled name="Country" type="text" value="{$elts[0].country}" class="form-control input-xs country">
+        <input disabled name="Country" type="text" value="{$elts[0].country}" class="form-control input-xs country">
       </div>
     </div>
     <div class="form-group">
       <label class="col-xs-3 control-label text-right">Region</label>  
       <div class="col-xs-9">
-      <input disabled name="Region" type="text" value="{$elts[0].region}" class="form-control input-xs region">
+        <input disabled name="Region" type="text" value="{$elts[0].region}" class="form-control input-xs region">
       </div>
     </div>
     <div class="form-group">
       <label class="col-xs-3 control-label text-right">Description</label>  
       <div class="col-xs-9">
-      <p class="disabled description">{$elts[0].description}</p>
+        <p class="disabled description">{$elts[0].description}</p>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-xs-3 control-label text-right"></label> 
-      <div class="col-xs-9">
-      <img class="img-responsive" src="img/{$elts[0].picture}" alt="bouteille de {$elts[0].name}">
+      <div class="col-xs-12">
+          <img class="img-responsive" src="img/{$elts[0].picture}" alt="bouteille de {$elts[0].name}">
       </div>
     </div>
     </fieldset>
