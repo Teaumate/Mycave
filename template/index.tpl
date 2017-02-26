@@ -124,14 +124,16 @@
                   <div class="col-sm-2 td">
                       {$elt.name}
                   </div>
-                  {for $i=2 to 5}
-                  <div class=" col-sm-1 td">
-                      {$elt[$i]}
-                  </div>
-                  {/for}
+                  {foreach $elt as $i}
+                    {if $i@index ge 2 && $i@index le 5}
+                    <div class=" col-sm-1 td">
+                        {$i}
+                    </div>
+                    {/if}
+                  {/foreach}
                   <!-- fin for -->
                   <div class=" col-sm-4 td">
-                      {$elt[6]}      <!--      affiche la description   -->
+                      {$elt.description}      <!--      affiche la description   -->
                   </div>
                   <div class=" col-sm-1 td">
                       <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#myModal" >

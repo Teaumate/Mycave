@@ -1,79 +1,77 @@
 <?php
 session_start();
+include("php/php_fast_cache.php");
 
-require 'php/connect.php';
-require("libs/Smarty.class.php");
+require 'php/connect.php';          // Connection à la bd
+require("libs/Smarty.class.php");   // Smarty
 
 define('MAIN_PATH', getcwd());
 
+phpFastCache::$storage = "auto";
+$ListNames = phpFastCache::get("products_page");   //****** mise en cache *************************
+if($ListNames == null) {
+    $req       = $bdd->query("SELECT * FROM mycave ORDER BY id");   // récupère toute la base
+    $ListNames = $req->fetchAll(PDO::FETCH_ASSOC);
+    phpFastCache::set("products_page",$ListNames,600);  //*****************************************
+}
+$first     = $ListNames[0]["id"];               // 1er enregistrement
+$nb_rec    = count($ListNames);                 // nb d'elements dans la base
+$last      = $ListNames[$nb_rec - 1]["id"];     // dernier enregistrement
+$nb_elt    = 10;                                // nb enregistrements par pages
+$nb_pages  = ceil($nb_rec / $nb_elt);           // calcul du nb pages
 
-$MinMax = $bdd->query("SELECT MIN(id) AS First, MAX(id) AS Last FROM mycave"); // determine 1ere et derniere bouteille de mycave
-$first_Last = $MinMax->fetch();
-$first=$first_Last[0];                   // 1er enregistrement
-$last=$first_Last[1];                    // dernier enregistrement
+$page      = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
+$bottle    = filter_input(INPUT_GET, 'bottle', FILTER_SANITIZE_NUMBER_INT);
+$direction = filter_input(INPUT_GET, 'direction', FILTER_SANITIZE_STRING);
 
-$page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
-$bottle = filter_input(INPUT_GET, 'bottle', FILTER_SANITIZE_NUMBER_INT);
-$direction = filter_input(INPUT_GET, 'direction',FILTER_SANITIZE_STRING);
-
-$page = ($page > 0) ? $page : 0;            // quelle page afficher
+$page   = ($page > 0) ? $page : 0;          // quelle page afficher
 $bottle = ($bottle > 0) ? $bottle : $first; // ou quelle bouteille si smartphone
-$nb_elt = 10;                               // nb enregistrements par pages
 
-$req = $bdd->query("SELECT id, name FROM mycave ORDER BY id");    // pour le <select> du smartphone
-$ListName=$req->fetchAll(PDO::FETCH_ASSOC);                       // on récupère tous les noms + id
-$optNames = array_column($ListName, 'name', 'id');
+$optNames = array_column($ListNames, 'name', 'id'); // on récupère les colonnes 'name' et 'id' de $ListNames (pour smartphone)
 
-if(!(isset($direction))){       // si grand écran
-  $req = $bdd->query("SELECT * FROM mycave ORDER BY name LIMIT ". $page*$nb_elt ."," . $nb_elt);
-  $elements=array();
-  $i=$nb_elt;
-  while ($donnees = $req->fetch()) {
-    $elem = array_merge($donnees,array('ordre'=>$i));
-    $elements[]=$elem;              // tableau de (nb_elt) bouteilles
-    $i--;
-  }
-}elseif($direction=='left'){  // *********************    si smartphone  ***************
-  if($bottle !== $first){
-    $req = $bdd->query("SELECT * FROM mycave WHERE id < ". $bottle ." ORDER BY id DESC LIMIT 1");
-  }else{
-    $req = $bdd->query("SELECT * FROM mycave WHERE id = ". $first);
-  }
-  $donnees = $req->fetch();
-  $bottle = $donnees[0];
-  $elements[]=$donnees;
-  $direction=NULL;
-}elseif($direction=='right'){
-  if($bottle !== $last){
-    $req = $bdd->query("SELECT * FROM mycave WHERE id > ". $bottle ." ORDER BY id LIMIT 1");
-  }else{
-    $req = $bdd->query("SELECT * FROM mycave WHERE id = ". $last);
-  }
-  $donnees = $req->fetch();
-  $bottle = $donnees[0];
-  $elements[]=$donnees;
-  $direction=NULL;
-}else{
-  $req = $bdd->query("SELECT * FROM mycave WHERE id = ". $bottle);    // choix d'une bouteille particulière
-  $donnees = $req->fetch();
-  $bottle = $donnees[0];
-  $elements[]=$donnees;
-  $direction=NULL;
+$LaBase = array();           // tableau associatif id => ligne (une bouteille et toutes ses infos) *******
+$LesIndex = array();         // tableau associant les indexes aux id
+foreach ($ListNames as $index => $line) {
+  $line[] = $index;
+  $LaBase[$line["id"]] =  $line;
+  $LesIndex[] = $line["id"];  // ****************************
 }
 
-$_SESSION['page'] = $page;    // page en cours pour retour de update, delete ...
-$req = $bdd->query("SELECT COUNT(*) AS nb_rec FROM mycave"); // calcul nb enregistrements
-$donnees = $req->fetch();
-$nb_pages = ceil($donnees[0]/$nb_elt);      // calcul nb pages
+if (!(isset($direction))) { // ****************************** si grand écran ****************
+    $elements = array();
+    $i        = 0;
+    $nb_eltPage = $nb_elt;      // elts de derniere page <= $nb_elt
+    if($page == ($nb_pages-1)) {$nb_eltPage = (1 - $nb_pages) * $nb_elt + $nb_rec;}
+    while ($i < $nb_eltPage) {
+        $elem = array_merge($ListNames[$page * $nb_elt + $i], array('ordre' => ($nb_elt - $i))); // pour le z-index des images
+        $elements[] = $elem; // tableau de (nb_eltPage) bouteilles
+        $i++;
+    }
+} elseif ($direction == 'left') { // *********************    si smartphone  ***************
+    if ($bottle != $first) {
+        $bottle    = $LesIndex[$LaBase[$bottle][0]-1];
+    }
+    $elements[] = $LaBase[$bottle];
+    $direction = NULL;
+} elseif ($direction == 'right') {
+    if ($bottle != $last) {
+        $bottle    = $LesIndex[$LaBase[$bottle][0]+1];
+    }
+    $elements[] = $LaBase[$bottle];
+    $direction = NULL;
+} else {
+    $elements[] = $LaBase[$bottle];
+    $direction = NULL;
+}
 
-$smarty = new Smarty();                 // nouvel objet smarty et recup des variables php dans smarty
+$smarty = new Smarty();                   // nouvel objet smarty et recup des variables php dans smarty
 $smarty->setTemplateDir('./template');
-$smarty->assign('nb_rec',$donnees[0]);      // nombre de lignes dans mycave
-$smarty->assign('nb_pages',$nb_pages);      // nombre de pages
-$smarty->assign('page',$page);              // page courrente
-$smarty->assign('elts',$elements);          // les enregistrements de mycave
-$smarty->assign('bottle',$bottle);          // bouteille en cours
-$smarty->assign('session',$_SESSION);
-$smarty->assign('myOptions', $optNames);    // la liste des bouteilles
+$smarty->assign('nb_rec', $nb_rec);       // nombre de lignes dans mycave
+$smarty->assign('nb_pages', $nb_pages);   // nombre de pages
+$smarty->assign('page', $page);           // page courrente
+$smarty->assign('elts', $elements);       // les enregistrements de mycave
+$smarty->assign('bottle', $bottle);       // bouteille en cours
+$smarty->assign('session', $_SESSION);
+$smarty->assign('myOptions', $optNames);  // la liste des bouteilles
 
-$smarty->display('index.tpl');              // appelle la page principale
+$smarty->display('index.tpl');            // appelle la page principale
