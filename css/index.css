@@ -150,9 +150,10 @@ body{
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(136,0,45,.6);
 }
 /*********************** effet grossissnt sur la bouteille *********************************/
+.effectfront{
+    width:100%;
+}
 .effectfront:hover {
-    overflow: visible;
-    opacity: 1;
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
     width: 228%;
@@ -190,7 +191,64 @@ body{
         border-top:0 none;
     }
 }
-#SwipeScreen > div.container.visible-xs-block.container-xs > form > fieldset > div:nth-child(6) > div > p {
+
+/*************************************** style des boutons ******************************/
+
+.delete:hover, .update:hover, .btn-create:hover {
+    background: #000;
+    color: #fff;
+}
+.delete, .update {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    background: #88002d ;
+    margin: 5px auto;
+    display: block;
+}
+.update{
+    background: #f90;
+}
+.create-xs{
+    background: #885c7e;
+}
+.delete-xs, .update-xs, .create-xs {
+    display: inline;
+}
+.btn-create {
+    width: 100%;
+    height: 29px;
+    border-top-right-radius: 15px;
+    -moz-border-radius-topright: 10px;
+    -webkit-border-top-right-radius: 10px;
+    border-bottom-left-radius: 15px;
+    -moz-border-radius-bottomleft: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    border: none;
+    background: #885c7e;
+    color: #fff;
+    margin: 2px auto;
+}
+.pagination>li>a{
+    background: #3e0018;
+    color: #885c7e;
+}
+.pagination>li>a:hover{
+    background: transparent;
+    color: #88002d;
+}
+/****************************************** style xs ********************************/
+.img-responsive-xs {
+    max-width: initial;
+    width: 75%;
+    margin: auto;
+}
+.description-xs {
     color: rgb(85, 85, 85);
     background: rgb(238, 238, 238);
     border: 0.8px solid rgb(204, 204, 204);
@@ -198,4 +256,3 @@ body{
     padding: 6px 12px;
     font: normal normal normal normal 14px / 20px "Source Sans Pro", sans-serif;
 }
-

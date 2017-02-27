@@ -5,14 +5,14 @@
       <a href="index.php?bottle={$bottle}&direction=left" class="hidden"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="col-xs-10 text-center">
-      <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#CreateModal" >
+      <button type="button" class="update create-xs {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#CreateModal" >
         <em class="fa fa-plus"></em>
       </button>
-      <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#UpdateModal" >
+      <button type="button" class="update update-xs {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#UpdateModal" >
         <i class="fa fa-pencil"></i>
       </button>
       <form method="post" action="php/delete.php" class="btn-delete-xs">
-        <button type="submit" class="delete btn btn-danger {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" >
+        <button type="submit" class="delete delete-xs {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" >
           <i class="fa fa-trash"></i>
         </button>
         <div class="hidden"><input type="text" name="Del_rec" value="{$elts[0].id}"></div> <!-- masqué on récup l'ID -->
@@ -58,12 +58,12 @@
     <div class="form-group">
       <label class="col-xs-3 control-label text-right">Description</label>  
       <div class="col-xs-9">
-        <p class="disabled description">{$elts[0].description}</p>
+        <p class="description-xs disabled description">{$elts[0].description}</p>
       </div>
     </div>
     <div class="form-group">
       <div class="col-xs-12">
-          <img class="img-responsive" src="img/{$elts[0].picture}" alt="bouteille de {$elts[0].name}">
+          <img class="img-responsive img-responsive-xs" src="img/{$elts[0].picture}" alt="bouteille de {$elts[0].name}">
       </div>
     </div>
     </fieldset>

@@ -67,9 +67,9 @@
               <div class="col-sm-4 th">Description</div>
               <div class="col-sm-1 th btn-create-head">            
                 {if (isset($session['id']) AND isset($session['pseudo']))} <!--************** button Create ****************-->
-                  <button type="button" class="btn btn-sm btn-primary btn-create" id="create">Create New</button>
+                  <button type="button" class="btn btn-sm btn-create" id="create">Create New</button>
                 {else}
-                    <button type="button" class="btn btn-sm btn-primary btn-create disabled" id="create">Create New</button>
+                    <button type="button" class="btn btn-sm btn-create disabled" id="create">Create New</button>
                 {/if}
               </div>
             </div>
@@ -136,11 +136,11 @@
                       {$elt.description}      <!--      affiche la description   -->
                   </div>
                   <div class=" col-sm-1 td">
-                      <button type="button" class="update btn btn-default {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#myModal" >
+                      <button type="button" class="update {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}" data-toggle="modal" data-target="#myModal" >
                       <em class="fa fa-pencil"></em>
                       </button>
                       <form method="post" action="php/delete.php">
-                        <button type="submit" class="delete btn btn-danger {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}"><em class="fa fa-trash"></em></button>
+                        <button type="submit" class="delete {if !(isset($session['id']) AND isset($session['pseudo']))}disabled{/if}"><em class="fa fa-trash"></em></button>
                         <div class="hidden"><input type="text" name="Del_rec" value="{$elt.id}"></div>
                       </form>
                   </div>
@@ -160,10 +160,6 @@
               {for $i=1 to $nb_pages}
                 <li><a href="index.php?page={$i-1}">{$i}</a></li>
               {/for}
-            </ul>
-            <ul class="pagination visible-xs pull-right">
-              <li><a href="#">«</a></li>
-              <li><a href="#">»</a></li>
             </ul>
           </div>
         </div>
