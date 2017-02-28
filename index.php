@@ -9,10 +9,11 @@ define('MAIN_PATH', getcwd());
 
 phpFastCache::$storage = "auto";
 $ListNames = phpFastCache::get("products_page");   //****** mise en cache *************************
-if($ListNames == null) {
+if($ListNames == null || !isset($_GET['cache'])) {
     $req       = $bdd->query("SELECT * FROM mycave ORDER BY id");   // récupère toute la base
     $ListNames = $req->fetchAll(PDO::FETCH_ASSOC);
-    phpFastCache::set("products_page",$ListNames,600);  //*****************************************
+    phpFastCache::set("products_page",$ListNames,600);
+    $_GET['cache'] = NULL;                        //*****************************************
 }
 $first     = $ListNames[0]["id"];               // 1er enregistrement
 $nb_rec    = count($ListNames);                 // nb d'elements dans la base
@@ -29,7 +30,7 @@ $bottle = ($bottle > 0) ? $bottle : $first; // ou quelle bouteille si smartphone
 
 $optNames = array_column($ListNames, 'name', 'id'); // on récupère les colonnes 'name' et 'id' de $ListNames (pour smartphone)
 
-$LaBase = array();           // tableau associatif id => ligne (une bouteille et toutes ses infos) *******
+$LaBase   = array();           // tableau associatif id => ligne (une bouteille et toutes ses infos) *******
 $LesIndex = array();         // tableau associant les indexes aux id
 foreach ($ListNames as $index => $line) {
   $line[] = $index;
