@@ -25,12 +25,12 @@
                         <div class="col-md-12">
                           <form class="form" role="form" method="post" action="php/login_post.php" accept-charset="UTF-8" id="login-nav">
                             <div class="form-group">
-                              <label class="sr-only" for="exampleInputEmail2">Login</label>
-                              <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Login" name="login" required autofocus>
+                              <label class="sr-only" for="InputLogin">Login</label>
+                              <input type="text" class="form-control" id="InputLogin" placeholder="Login" name="login" required autofocus>
                             </div>
                             <div class="form-group">
-                              <label class="sr-only" for="exampleInputPassword2">Password</label>
-                              <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" name="pswd" required>
+                              <label class="sr-only" for="InputPswd">Password</label>
+                              <input type="password" class="form-control" id="InputPswd" placeholder="Password" name="pswd" required>
                             </div>
                             <div class="form-group">
                               <button type="submit" class="btn btn-primary btn-block">Sign in</button>
@@ -166,11 +166,11 @@
       </div>
     </div>
     <!--******************************************** Modal Update pour ecran > xs ***************************************-->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Update plz</h5>
+            <h5 class="modal-title" id="ModalLabel">Update plz</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("php/php_fast_cache.php");
+include("php/php_fast_cache.php");  // gestion du cache
 
 require 'php/connect.php';          // Connection à la bd
 require("libs/Smarty.class.php");   // Smarty
@@ -41,11 +41,11 @@ foreach ($ListNames as $index => $line) {
 if (!(isset($direction))) { // ****************************** si grand écran ****************
     $elements = array();
     $i        = 0;
-    $nb_eltPage = $nb_elt;      // elts de derniere page <= $nb_elt
+    $nb_eltPage = $nb_elt;       // si derniere page elts <= $nb_elt
     if($page == ($nb_pages-1)) {$nb_eltPage = (1 - $nb_pages) * $nb_elt + $nb_rec;}
     while ($i < $nb_eltPage) {
         $elem = array_merge($ListNames[$page * $nb_elt + $i], array('ordre' => ($nb_elt - $i))); // pour le z-index des images
-        $elements[] = $elem; // tableau de (nb_eltPage) bouteilles
+        $elements[] = $elem;     // tableau de (nb_eltPage) bouteilles
         $i++;
     }
 } elseif ($direction == 'left') { // *********************    si smartphone  ***************
